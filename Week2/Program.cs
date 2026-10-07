@@ -1,10 +1,13 @@
-﻿namespace Week_1
+﻿using Week_1;
+using Week_2;
+
+namespace Week2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Introductie.Leeftijd();
+           Variabelen.Average();
         }
     }
 }
