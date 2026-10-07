@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Controlestructuren.Leveringskosten();
+            Controlestructuren.KmToMiles();
         }
     }
 }

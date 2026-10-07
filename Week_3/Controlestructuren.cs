@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Channels;
 
 namespace Week_3
 {
@@ -153,5 +154,115 @@ namespace Week_3
 
         }
 
+        public static void Weddeberekening()
+        {
+            Console.Write("Geef je naam in: ");
+            string? naam = Console.ReadLine();
+
+            decimal hourlyWage = 0;
+            int workedHours = 0;
+
+            do
+            {
+                Console.Write("Geef je uurloon in: ");
+            } while (!decimal.TryParse(Console.ReadLine(), out hourlyWage));
+
+            do
+            {
+                Console.Write("Geef het aantal gewerkte uren in: ");
+            } while (!int.TryParse(Console.ReadLine(), out workedHours));
+
+            decimal brutoWage = hourlyWage * workedHours;
+            decimal taxedWage = brutoWage;
+            decimal tax = 0;
+
+            if (taxedWage > 50000)
+            {
+                taxedWage -= 50000;
+                tax += taxedWage * 0.50m;
+                taxedWage = 50000;
+            }
+            if (taxedWage > 25000)
+            {
+                taxedWage -= 25000;
+                tax += taxedWage * 0.40m;
+                taxedWage = 25000;
+            }
+            if (taxedWage > 15000)
+            {
+                taxedWage -= 15000;
+                tax += taxedWage * 0.30m;
+                taxedWage = 15000;
+            }
+            if (taxedWage > 10000)
+            {
+                taxedWage -= 10000;
+                tax += taxedWage * 0.20m;
+            }
+
+            Console.WriteLine($"\nLoonfiche van: {naam}\n\n" +
+                $"Aantal gewerkte uren:\t{workedHours}\n" +
+                $"Uurloon:\t\t{hourlyWage}\n" +
+                $"Bruto Jaarwedde:\t{brutoWage}\n" +
+                $"Belasting:\t\t{tax:F2}\n" +
+                $"Netto Jaarwedde:\t{(brutoWage - tax):F2}");
+        }
+
+        public static void KmToMiles()
+        {
+            Console.WriteLine("In welke eenheid wilt u de afstand ingeven?");
+            Console.WriteLine("\t1. Kilometer\n\t2. Mijl");
+
+            Console.Write("Uw keuze: ");
+            string? input = Console.ReadLine();
+
+            const double Ratio = 1.60934;
+            double outcome = 0;
+
+            if (input != null)
+            {
+                input.ToLower();
+            }
+            switch (input)
+            {
+                case "1":
+                    Console.Write("Afstand in km: ");
+
+                    if (double.TryParse(Console.ReadLine(), out outcome))
+                    {
+                        Console.Write($"Afstand in mijl: {(outcome / Ratio)}");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Dit is geen geldige invoer.");
+                        Console.ResetColor();
+                    }
+                    break;
+                case "2":
+                    Console.Write("Afstand in mijl: ");
+                    if (double.TryParse(Console.ReadLine(), out outcome))
+                    {
+                        Console.Write($"Afstand in km: {(outcome * Ratio)}");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Dit is geen geldige invoer.");
+                        Console.ResetColor();
+                    }
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Deze eenheid wordt niet ondersteund");
+                    Console.ResetColor();
+                    break;
+            }
+        }
+
+        public static void Diploma()
+        {
+
+        }
     }
 }
