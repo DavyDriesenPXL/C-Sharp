@@ -65,7 +65,7 @@ namespace Week_3
             string? input = Console.ReadLine();
             int geboortejaar;
 
-            if (int.TryParse(input, out geboortejaar) && geboortejaar >= 1900 && geboortejaar <= 2026) ;
+            if (int.TryParse(input, out geboortejaar) && geboortejaar >= 1900 && geboortejaar <= 2026);
             {
                 int leeftijd = 2026 - geboortejaar;
 
@@ -97,19 +97,57 @@ namespace Week_3
             {
                 fee += 300;
             }
-                        
-            if(region == "Brussel" && age >= 18)
+
+            if (region == "Brussel" && age >= 18)
             {
                 fee += 200;
             }
 
-            if(smoker == "Y")
+            if (smoker == "Y")
             {
                 fee *= 2;
             }
-            
-            Console.WriteLine($"De totaalprijs van uw hospitalisatieverzekering is: {fee} euro.");
 
+            Console.WriteLine($"De totaalprijs van uw hospitalisatieverzekering is: {fee} euro.");
         }
+        public static void Leveringskosten()
+        {
+            Console.Write("Geef de prijs in van het product: ");
+            int.TryParse(Console.ReadLine(), out int price);
+            Console.Write("Geef het aantal producten in: ");
+            int.TryParse(Console.ReadLine(), out int amount);
+            Console.WriteLine("BTW-percentage (6, 12 of 21): ");
+            int.TryParse(Console.ReadLine(), out int btw);
+
+            decimal nettoPrice = price * amount;
+            decimal tax = 0;
+            decimal discountedNettoPrice = nettoPrice;
+            decimal totalPrice = 0;
+
+            if (amount >= 10)
+            {
+                discountedNettoPrice *= 0.95m;
+            }
+            
+                if (btw == 21)
+                {
+                    tax = discountedNettoPrice * 0.21m;
+                    totalPrice = discountedNettoPrice + tax;
+                }
+                else if (btw == 12)
+                {
+                    tax = discountedNettoPrice * 0.12m;
+                totalPrice = discountedNettoPrice + tax;
+                }
+                else if (btw == 6)
+                {
+                    tax = discountedNettoPrice * 0.06m;
+                totalPrice = discountedNettoPrice + tax;
+                }
+            
+            Console.WriteLine($"De totaalprijs is: {totalPrice:F2} euro inclusief BTW.\nIn totaal betaalde u {tax:F2} euro aan BTW.");
+          
+        }
+
     }
 }
