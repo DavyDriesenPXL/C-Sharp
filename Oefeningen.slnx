@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="Week 1/Week_1.csproj" />
-  <Project Path="Week2/Week_2.csproj" Id="06211784-841d-4b20-ad85-e9e5c81fef2c" />
+  <Project Path="Week_1/Week_1.csproj" />
+  <Project Path="Week_2/Week_2.csproj" />
   <Project Path="Week_3/Week_3.csproj" Id="4a6775e9-8e99-48b4-9efc-9d0e89982c21" />
 </Solution>

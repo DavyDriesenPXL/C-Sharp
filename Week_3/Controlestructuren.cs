@@ -65,7 +65,7 @@ namespace Week_3
             string? input = Console.ReadLine();
             int geboortejaar;
 
-            if (int.TryParse(input, out geboortejaar) && geboortejaar >= 1900 && geboortejaar <= 2026);
+            if (int.TryParse(input, out geboortejaar) && geboortejaar >= 1900 && geboortejaar <= 2026)
             {
                 int leeftijd = 2026 - geboortejaar;
 
@@ -113,7 +113,7 @@ namespace Week_3
         public static void Leveringskosten()
         {
             Console.Write("Geef de prijs in van het product: ");
-            int.TryParse(Console.ReadLine(), out int price);
+            decimal.TryParse(Console.ReadLine(), out decimal price);
             Console.Write("Geef het aantal producten in: ");
             int.TryParse(Console.ReadLine(), out int amount);
             Console.WriteLine("BTW-percentage (6, 12 of 21): ");
@@ -128,25 +128,29 @@ namespace Week_3
             {
                 discountedNettoPrice *= 0.95m;
             }
-            
-                if (btw == 21)
-                {
-                    tax = discountedNettoPrice * 0.21m;
-                    totalPrice = discountedNettoPrice + tax;
-                }
-                else if (btw == 12)
-                {
-                    tax = discountedNettoPrice * 0.12m;
-                totalPrice = discountedNettoPrice + tax;
-                }
-                else if (btw == 6)
-                {
-                    tax = discountedNettoPrice * 0.06m;
-                totalPrice = discountedNettoPrice + tax;
-                }
-            
+
+            if (btw == 21)
+            {
+                tax = discountedNettoPrice * 0.21m;
+            }
+            else if (btw == 12)
+            {
+                tax = discountedNettoPrice * 0.12m;
+            }
+            else if (btw == 6)
+            {
+                tax = discountedNettoPrice * 0.06m;
+            }
+            totalPrice = discountedNettoPrice + tax;
+            if (totalPrice < 50)
+                totalPrice += 15;
+            else if (totalPrice >= 70)
+                totalPrice += 10;
+            else
+                totalPrice += 12;
+
             Console.WriteLine($"De totaalprijs is: {totalPrice:F2} euro inclusief BTW.\nIn totaal betaalde u {tax:F2} euro aan BTW.");
-          
+
         }
 
     }
