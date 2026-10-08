@@ -46,5 +46,22 @@ namespace Week_3
             }
 
         }
+
+        public static void Eindsaldo()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.Write("Beginsaldo: ");
+            decimal.TryParse(Console.ReadLine(), out decimal initialInput);
+            Console.Write("Aantal jaren: ");
+            decimal.TryParse(Console.ReadLine(), out decimal timeSpan);
+            Console.Write("Rente per jaar (%): ");
+            decimal.TryParse(Console.ReadLine(), out decimal interest);
+
+            double result = (double)initialInput * Math.Pow((double)(1 + interest / 100), (double)timeSpan);
+            result = Math.Round(result, 2);
+
+            Console.WriteLine($"Je eindsaldo na {timeSpan} jaar: {result:C}");
+        }
     }
 }
