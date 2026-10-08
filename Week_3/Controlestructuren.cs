@@ -262,6 +262,10 @@ namespace Week_3
 
         public static void Diploma()
         {
+            Console.Write("Geef de naam van de student in: \n");
+            string? name = Console.ReadLine();
+
+            Console.Write("Score Web Essentials: ");
 
         }
     }

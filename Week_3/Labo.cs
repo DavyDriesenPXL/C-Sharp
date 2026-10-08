@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 
 namespace Week_3
@@ -136,6 +137,99 @@ namespace Week_3
             }
 
             Console.ResetColor();
+        }
+
+        public static void GalacticExpress()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Random random = new Random();
+            StringBuilder sb = new StringBuilder();
+
+            string name;
+            string destination;
+            DateTime departureDate;
+            decimal basePrice = 89.95m;
+            decimal bagagePrice = 1.75m;
+            decimal totalCost = 0;
+            int gate = random.Next(1, 12);
+            int row = random.Next(1, 30);
+            int seat = random.Next(1, 6);
+            int controleNumber = random.Next(1000, 9999);
+
+            do
+            {
+                Console.Write("Geef je naam in: ");
+                name = Console.ReadLine()?.Trim()!;
+
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("Het veld naam mag niet leeg zijn.");
+                }
+
+            } while (string.IsNullOrWhiteSpace(name));
+
+            do
+            {
+                Console.Write("Geef je bestemming: ");
+                destination = Console.ReadLine()?.Trim()!;
+
+                if (destination.Length < 3)
+                {
+                    Console.WriteLine("De bestemming moet minstens 3 letters bevatten.");
+                }
+            } while (destination.Length < 3);
+
+            do
+            {
+                Console.Write("Geef de vertrekdatum (yyyy-MM-dd): ");
+                departureDate = DateTime.Parse(Console.ReadLine()!);
+
+                if(departureDate < DateTime.Today)
+                {
+                    Console.WriteLine("De vertrekdatum kan niet in het verleden liggen.");
+                }
+
+            } while (departureDate < DateTime.Today);
+
+            Console.Write("Geef het gewicht van je bagage in in kg: ");
+            int.TryParse(Console.ReadLine(), out int bagageWeight);
+
+            TimeSpan calculateDates = departureDate - DateTime.Today;
+            int daysTillDeparture = calculateDates.Days;
+
+            if (daysTillDeparture < 7)
+            {
+                basePrice += 12.50m;
+            }
+
+            totalCost = Math.Round(((bagagePrice * bagageWeight) + basePrice), 2, MidpointRounding.AwayFromZero);
+
+            sb.AppendLine("\n==================================");
+            sb.AppendLine("\tGALACTIC EXPRESS");
+            sb.AppendLine("\tBOARDING PASS");
+            sb.AppendLine("==================================");
+            sb.AppendLine($"{"Reiziger:",-18} {name}");
+            sb.AppendLine($"{"Bestemming:", -18} {destination}");
+            if(destination.ToLower().Contains("station"))
+            {
+                sb.AppendLine($"{"",-18} Special destination to a station!");
+            }
+            sb.AppendLine($"{"Code:", -18} {destination.Substring(0,3).ToUpper()}");
+            sb.AppendLine($"{"Vertrekdatum:",-18} {departureDate}");
+            sb.AppendLine($"{"Vertrekdag:",-18} {departureDate.DayOfWeek}");
+            sb.AppendLine($"{"Dagen tot vertrek:",-18} {daysTillDeparture}\n");
+            sb.AppendLine($"{"Gate:",-18} {gate}");
+            sb.AppendLine($"{"Stoel:",-18} Rij {row} - Stoel {seat}");
+            sb.AppendLine($"{"Controlecode:",-18} {controleNumber}\n");
+            sb.AppendLine($"{"Bagage:",-18} {bagageWeight:F2} kg");
+            sb.AppendLine($"{"Totale prijs:",-18} {totalCost:C}");
+            sb.AppendLine($"{"Boekingscode:",-18} {name.Replace(" ", "-")}\n");
+            sb.AppendLine($"{"Retourdatum:",-18} {departureDate.AddDays(7)}");
+
+            string result = sb.ToString();
+            Console.WriteLine(result);
+
         }
     }
 }
