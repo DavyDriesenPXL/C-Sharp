@@ -14,9 +14,9 @@ namespace Week_3
             do
             {
                 Console.Write("Ondernemingsnummer: ");
-                ondernemingsnummer = Console.ReadLine();
+                ondernemingsnummer = Console.ReadLine()?.Trim()!;
 
-                if(ondernemingsnummer.Length != 10 || !ondernemingsnummer.All(char.IsDigit))
+                if (ondernemingsnummer.Length != 10 || !ondernemingsnummer.All(char.IsDigit))
                 {
                     Console.WriteLine("Ondernemingsnummer moet uit exact 10 cijfers bestaan.");
                 }
@@ -25,6 +25,26 @@ namespace Week_3
                     isValid = true;
                 }
             } while (!isValid);
+
+            string firstEightDigits = ondernemingsnummer.Substring(0, 8);
+            string lastTwoDigits = ondernemingsnummer.Substring(8, 2);
+
+            int rest = int.Parse(firstEightDigits) % 97;
+            int controleNumber = 97 - rest;
+
+            if (controleNumber == 0)
+            {
+                controleNumber += 97;
+            }
+            if (controleNumber == int.Parse(lastTwoDigits))
+            {
+                Console.WriteLine("Het ondernemingsnummer is juist.");
+            }
+            else
+            {
+                Console.WriteLine("Het ondernemingsnummer is fout.");
+            }
+
         }
     }
 }
