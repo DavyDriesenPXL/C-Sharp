@@ -89,5 +89,44 @@ namespace Week_3
                 Console.ResetColor();
             }
         }
+
+        public static void Landmeter()
+        {
+            Console.Write("Afstand AC (in meter): ");
+            int.TryParse(Console.ReadLine(), out int meterAC);
+
+            if (meterAC > 0)
+            {
+                Console.Write("Hoek A (in graden): ");
+                int.TryParse(Console.ReadLine(), out int gradenA);
+                Console.Write("Hoek C (in graden): ");
+                int.TryParse(Console.ReadLine(), out int gradenC);
+
+                if (gradenA > 0 && gradenA < 180 && gradenC > 0 && gradenC < 180)
+                {
+
+                    double radiaalA = gradenA * Math.PI / 180;
+                    double radiaalC = gradenC * Math.PI / 180;
+
+                    double meterAB = meterAC * Math.Sin(radiaalC) / Math.Sin(radiaalA + radiaalC);
+
+                    Console.WriteLine($"Afstand AB is {meterAB} meter.");
+                }
+                else 
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ERROR: De hoeken van een driehoek moeten groter zijn dan 0° en kleiner dan 180° zijn.");
+                    Console.ResetColor();
+                    Console.WriteLine("Druk op ENTER om af te sluiten ...");
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ERROR: De afstand AC moet groter zijn dan 0m");
+                Console.ResetColor();
+                Console.WriteLine("Druk op ENTER om af te sluiten ...");
+            }
+        }
     }
 }
