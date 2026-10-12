@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Channels;
 
@@ -262,11 +263,134 @@ namespace Week_3
 
         public static void Diploma()
         {
-            Console.Write("Geef de naam van de student in: \n");
+            int olodWeb = 6;
+            int olodData = 4;
+            int olodC = 7;
+            int olodComm = 3;
+            int olodWp = 6;
+            int olodItOrg = 4;
+
+            Console.WriteLine("=============== PXL Digital ===============  ");
+
+            Console.Write("Naam student: ");
             string? name = Console.ReadLine();
+            Console.WriteLine("===========================================");
 
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("Score Web Essentials: ");
+            int.TryParse(Console.ReadLine(), out int scoreWeb);
+            if(scoreWeb < 0 || scoreWeb > 20)            
+            {
+                scoreWeb = 0;
+                olodWeb = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.Write("Score Data Essentials: ");
+            int.TryParse(Console.ReadLine(), out int scoreData);
+            if (scoreData < 0 || scoreData> 20)
+            {
+                scoreData = 0;
+                olodData = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.Write("Score C# Essentials: ");
+            int.TryParse(Console.ReadLine(), out int scoreC);
+            if (scoreC < 0 || scoreC > 20)
+            {
+                scoreC = 0;
+                olodC = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.Write("Score Communication Skills: ");
+            int.TryParse(Console.ReadLine(), out int scoreComm);
+            if (scoreComm < 0 || scoreComm > 20)
+            {
+                scoreComm = 0;
+                olodComm = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.Write("Score Werkplekleren 1: ");
+            int.TryParse(Console.ReadLine(), out int scoreWp);
+            if (scoreWp < 0 || scoreWp > 20)
+            {
+                scoreWp = 0;
+                olodWp = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.Write("Score IT-Organisation: ");
+            int.TryParse(Console.ReadLine(), out int scoreItOrg);
+            if (scoreItOrg < 0 || scoreItOrg > 20)
+            {
+                scoreItOrg = 0;
+                olodItOrg = 0;
+                Console.WriteLine("Ongeldige invoer.");
+            }
+            Console.ResetColor();
 
+            int studyPoints = olodWeb + olodData + olodC + olodComm + olodWp + olodItOrg;
+
+            double average = (double)(scoreWeb * olodWeb + scoreData * olodData + scoreC * olodC + scoreComm * olodComm + scoreWp * olodWp + scoreItOrg * olodItOrg) / studyPoints;
+
+            double tekortPoints = 0;
+
+            if (scoreWeb < 10)
+            {
+                tekortPoints = (10 - scoreWeb) * olodWeb;
+            }
+            if (scoreData < 10)
+            {
+                tekortPoints += (10 - scoreData) * olodData;
+            }
+            if (scoreC < 10)
+            {
+                tekortPoints += (10 - scoreC) * olodC;
+            }
+            if (scoreComm < 10)
+            {
+                tekortPoints += (10 - scoreComm) * olodComm;
+            }
+            if (scoreWp < 10)
+            {
+                tekortPoints += (10 - scoreWp) * olodWp;
+            }
+            if (scoreItOrg < 10)
+            {
+                tekortPoints += (10 - scoreItOrg) * olodItOrg;
+            }
+
+            double averageProcent = average * 5;
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"{name} behaalde een gewogen gemiddelde van {average:F2} met {tekortPoints:F0} tekortpunten!");
+            Console.ResetColor();
+
+            if (averageProcent >= 85 && tekortPoints == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Geslaagd met de grootste onderscheiding!");
+            }
+            else if (averageProcent >= 77 && tekortPoints == 0)
+
+                Console.WriteLine("Geslaagd met grote onderscheiding.");
+            else if (averageProcent >= 68 && tekortPoints == 0)
+                Console.WriteLine("Geslaagd met onderscheiding.");
+            else if (averageProcent >= 50 && tekortPoints == 0)
+            {
+                Console.WriteLine("Geslaagd met voldoening.");
+                Console.ResetColor();
+            }
+
+            if (tekortPoints > 0 && tekortPoints <= 10)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Gedelibereerd.");
+            }
+            else if (tekortPoints > 10)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Niet geslaagd.");
+                Console.ResetColor();
+            }
         }
     }
 }
