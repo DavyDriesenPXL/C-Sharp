@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Controlestructuren.Diploma();
+            Functies.Driehoek();
 
         }
     }

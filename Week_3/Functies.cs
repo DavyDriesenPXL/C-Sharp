@@ -63,5 +63,31 @@ namespace Week_3
 
             Console.WriteLine($"Je eindsaldo na {timeSpan} jaar: {result:C}");
         }
+
+        public static void Driehoek()
+        {
+            Console.Write("Lengte van zijde a: ");
+            int.TryParse(Console.ReadLine(), out int zijdeA);
+            Console.Write("Lengte van zijde b: ");
+            int.TryParse(Console.ReadLine(), out int zijdeB);
+            Console.Write("Lengte van zijde c: ");
+            int.TryParse(Console.ReadLine(), out int zijdeC);
+
+            if ((zijdeA + zijdeB) > zijdeC && (zijdeB + zijdeC) > zijdeA && (zijdeC + zijdeA) > zijdeB)
+            {
+                double halveOmtrek = (double)(zijdeA + zijdeB + zijdeC) / 2;
+
+                double oppervlakte = Math.Sqrt(halveOmtrek * (halveOmtrek - zijdeA) * (halveOmtrek - zijdeB) * (halveOmtrek - zijdeC));
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"De oppervlakte van de driehoek is: {oppervlakte:F2} m3");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("De driehoek is ongeldig.");
+                Console.ResetColor();
+            }
+        }
     }
 }
