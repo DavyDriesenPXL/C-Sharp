@@ -2,4 +2,5 @@
   <Project Path="Week_1/Week_1.csproj" />
   <Project Path="Week_2/Week_2.csproj" />
   <Project Path="Week_3/Week_3.csproj" Id="4a6775e9-8e99-48b4-9efc-9d0e89982c21" />
+  <Project Path="Week_4/Week_4.csproj" Id="bfb4f414-87c5-496f-a4c8-ffe41db44af9" />
 </Solution>
