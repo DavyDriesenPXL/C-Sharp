@@ -80,5 +80,35 @@ namespace Week_4
                 }
             }
         }
+
+        public static void Faculteit()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Faculteitsberekening");
+            Console.ResetColor();
+
+            bool isCorrect;
+            int number;
+
+            do
+            {
+                Console.Write("Geef een getal: ");
+                isCorrect = int.TryParse(Console.ReadLine(), out number);
+
+            } while (!isCorrect);
+            
+            int faculteit = 1;
+            string berekening ="";
+           
+            for (int i = number; i > 0; i--)
+            {
+                faculteit *= i;
+
+               berekening += i > 1 ? i + " * " : i.ToString();
+                
+                   
+            }
+            Console.WriteLine($"{number} faculteit = {berekening} = {faculteit}");
+        }
     }
 }

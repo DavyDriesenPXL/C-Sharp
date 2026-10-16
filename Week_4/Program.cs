@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Herhalingsstructuren.Machtsverheffing();
+            Herhalingsstructuren.Faculteit();
         }
     }
 }
