@@ -11,7 +11,7 @@ namespace Week_4
             StringBuilder sb = new StringBuilder();
 
             string? naamAtleet;
-            int seconden = 0;
+            int seconden;
             string? snelsteAtleet = "";
             int besteTijd = int.MaxValue;
 
@@ -35,7 +35,6 @@ namespace Week_4
                         besteTijd = seconden;
                         snelsteAtleet = naamAtleet;
                     }
-
                 }
             } while (naamAtleet != "STOP");
 
@@ -50,6 +49,36 @@ namespace Week_4
 
             string result = sb.ToString();
             Console.WriteLine(result);
+        }
+
+        public static void Machtsverheffing()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Machtsverheffing");
+            Console.ResetColor();
+
+            int number;
+            bool isCorrect;
+            do
+            {
+                Console.Write("Geef een getal: ");
+                isCorrect = int.TryParse(Console.ReadLine(), out number);
+
+            } while(!isCorrect);
+
+            for(int i = 1; i <= 10; i++)
+            {
+                double machtsverheffing = Math.Pow(number, i);
+
+                if (i == 1)
+                {
+                    Console.WriteLine($"{number} tot de {i}ste macht = {machtsverheffing}");
+                }
+                else
+                {
+                    Console.WriteLine($"{number} tot de {i}de macht = {machtsverheffing}");
+                }
+            }
         }
     }
 }
