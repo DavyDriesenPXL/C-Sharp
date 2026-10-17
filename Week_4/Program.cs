@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Herhalingsstructuren.Faculteit();
+            Herhalingsstructuren.Vermenigvuldigingstabel();
         }
     }
 }

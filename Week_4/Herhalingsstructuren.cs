@@ -64,9 +64,9 @@ namespace Week_4
                 Console.Write("Geef een getal: ");
                 isCorrect = int.TryParse(Console.ReadLine(), out number);
 
-            } while(!isCorrect);
+            } while (!isCorrect);
 
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 double machtsverheffing = Math.Pow(number, i);
 
@@ -96,19 +96,82 @@ namespace Week_4
                 isCorrect = int.TryParse(Console.ReadLine(), out number);
 
             } while (!isCorrect);
-            
+
             int faculteit = 1;
-            string berekening ="";
-           
+            string berekening = "";
+
             for (int i = number; i > 0; i--)
             {
                 faculteit *= i;
 
-               berekening += i > 1 ? i + " * " : i.ToString();
-                
-                   
+                berekening += i > 1 ? i + " * " : i.ToString();
             }
             Console.WriteLine($"{number} faculteit = {berekening} = {faculteit}");
+        }
+
+        public static void Lotto()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("LOTTO");
+            Console.ResetColor();
+
+            Random random = new Random();
+
+            int number;
+            string input;
+
+            do
+            {
+                for (int i = 1; i < 7; i++)
+                {
+                    number = random.Next(1, 46);
+                    Console.WriteLine($"\nGetal {i}: {number}");
+                }
+                do
+                {
+                    Console.Write("\nWilt u andere getallen (J/N)? ");
+                    input = Console.ReadLine()!;
+
+                } while (input != "J" && input != "N");
+
+            } while (input != "N");
+        }
+
+        public static void Vermenigvuldigingstabel()
+        {
+            int number;
+
+            do
+            {
+                Console.Write("Geef een getal in: ");
+                int.TryParse(Console.ReadLine(), out number);
+
+            } while (number > 10);
+
+            for (int i = 1; i < number + 1; i++)
+            {
+                Console.Write("\t");
+                Console.Write($"{i}");
+            }
+
+            Console.WriteLine();
+
+            for (int i = 1; i < number + 1; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($"{i}\t");
+                Console.ResetColor();
+
+                for (int j = 1; j < number + 1; j++)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"{j * i}\t");
+                    Console.ResetColor();
+                }
+
+                Console.WriteLine();
+
+            }
         }
     }
 }
