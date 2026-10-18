@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Week_4
@@ -148,6 +149,8 @@ namespace Week_4
 
             } while (number > 10);
 
+            Console.WriteLine();
+
             for (int i = 1; i < number + 1; i++)
             {
                 Console.Write("\t");
@@ -172,6 +175,40 @@ namespace Week_4
                 Console.WriteLine();
 
             }
+        }
+
+        public static void Sparen()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Sparen\n");
+            Console.ResetColor();
+
+            Console.Write("Zakgeld (per week): ");
+            decimal.TryParse(Console.ReadLine(), out decimal zakgeld);
+            Console.Write("Wekelijkse verhoging: ");
+            decimal.TryParse(Console.ReadLine(), out decimal verhoging);
+            Console.Write("Gewenst bedrag (doel): ");
+            decimal.TryParse(Console.ReadLine(), out decimal doel);
+
+            decimal total = zakgeld;
+            int week = 0;
+
+            Console.WriteLine($"\nWeek {week,5}\t Zakgeld € {zakgeld:F2}\t\t Totaal: € {total,5:F2}");
+
+            while (total <= doel)
+            {
+                week++;
+                zakgeld += verhoging;
+                total += zakgeld;
+
+                Console.WriteLine($"Week {week,5}\t Zakgeld € {zakgeld:F2}\t\t Totaal: € {total,5:F2}");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\nJe hebt {week} weken nodig om je doel van {doel} euro bij elkaar te sparen.");
+            Console.ResetColor();
         }
     }
 }
