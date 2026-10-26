@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Parkeermeter.Parkeermeter_();
+            BlackJack.BlackJack_();
         }
     }
 }
