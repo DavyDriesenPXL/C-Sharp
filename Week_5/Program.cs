@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            DiceDuel.DiceDuel_();
+            Parkeermeter.Parkeermeter_();
         }
     }
 }
