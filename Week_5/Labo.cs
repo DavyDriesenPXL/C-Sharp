@@ -12,6 +12,7 @@ namespace Week_5
         {
             ShowTitle();
             ShowInfo();
+            StartGame();
 
             static void ShowTitle()
             {
@@ -70,6 +71,7 @@ namespace Week_5
                     return choice;
                 }
                 return -1;
+
             }
 
             static int ApplyPenalty(int timeLeft, int penalty)
@@ -83,7 +85,58 @@ namespace Week_5
                 return newTime;
             }
 
- 
+            static bool TryKeyPad()
+            {
+                ShowColoredText("Enter 3-digit keypad code: ", ConsoleColor.Magenta);
+                string input = Console.ReadLine();
+
+                if (input == "314")
+                {
+                    ShowColoredText("Keypad unlocked!", ConsoleColor.Green, true);
+                    return true;
+                }
+                else if (!int.TryParse(input, out int numericInput))
+                {
+                    ShowColoredText("Invalid code (not a number).", ConsoleColor.DarkRed, true);
+                    return false;
+                }
+                else
+                {
+                    ShowColoredText("Wrong code.", ConsoleColor.Red, true);
+
+                    return false;
+                }
+            }
+
+            static void StartGame()
+            {
+                int timeLeft = 15;
+                bool keypadSolved = false;
+                bool riddleSolved = false;
+                bool escaped = false;
+                int action;
+                int penalty = 2;
+
+                do
+                {
+                    ShowTitle();
+                    ShowStatus(timeLeft, keypadSolved, riddleSolved);
+                    ShowMenu();
+                    action = ReadAction();
+                    switch(action)
+                    {
+                        case 1:
+                            keypadSolved = TryKeyPad();
+
+                            if(keypadSolved == false)
+                            {
+                                timeLeft = ApplyPenalty(timeLeft, penalty);
+                            }
+                            break;
+                    }
+                    Console.ReadLine();
+                } while (action != 9);
+            }
         }
     }
 }

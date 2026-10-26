@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Methodes.Rekenmachine();
+            DiceDuel.DiceDuel_();
         }
     }
 }
