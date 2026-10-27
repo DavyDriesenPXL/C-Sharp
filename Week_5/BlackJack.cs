@@ -24,9 +24,7 @@ namespace Week_5
                 switch (menuChoice)
                 {
                     case '1':
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("Your turn, press ENTER to draw a card...");
-                        Console.ResetColor();
+                        ShowColoredText("Your turn, press ENTER to draw a card...", ConsoleColor.Cyan, true);
                         Console.ReadLine();
                         PlayNextGame();
                         break;
@@ -34,11 +32,8 @@ namespace Week_5
                         ShowColoredText("See you next time!\nThanks for playing!\nB L A C K J A C K", ConsoleColor.Blue, true);
                         break;
                     default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Invalid choice, please try again.");
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ResetColor();
+                        ShowColoredText("Invalid choice, please try again.", ConsoleColor.Red, true);
+                        ShowColoredText("Press ENTER to continue...", ConsoleColor.Blue, true);
                         Console.ReadLine();
                         break;
                 }
@@ -47,18 +42,13 @@ namespace Week_5
 
         static void ShowTitle()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("B L A C K J A C K\n\nWelcome to the table!\n---------------------------");
-            Console.ResetColor();
+            ShowColoredText("B L A C K J A C K\n\nWelcome to the table!\n---------------------------", ConsoleColor.Blue, true);
         }
 
         static void ShowMenu()
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Are you feeling lucky?");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("  1. Hell yeah! Lets play!\n  2. Nah, Maybe later.");
-            Console.ResetColor();
+            ShowColoredText("Are you feeling lucky?", ConsoleColor.Magenta, true);
+            ShowColoredText("  1. Hell yeah! Lets play!\n  2. Nah, Maybe later.", ConsoleColor.DarkYellow, true);
         }
 
         static int GetRandomCard()
@@ -72,16 +62,13 @@ namespace Week_5
         {
             int totalCardValue = 0;
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Dealers turn, press ENTER to start...");
-            Console.ReadLine();
+            ShowColoredText("Dealers turn, press ENTER to start...", ConsoleColor.Cyan, true);
 
             do
             {
                 int cardValue = GetRandomCard();
                 totalCardValue += cardValue;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Dealer drew a {cardValue}. Dealers total is now {totalCardValue}");
+                ShowColoredText($"Dealer drew a {cardValue}. Dealers total is now {totalCardValue}", ConsoleColor.Green, true);
 
             } while (totalCardValue < 16);
 
@@ -96,15 +83,11 @@ namespace Week_5
             int nextCard;
             totalCardValue += firstCard;
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"You drew a {firstCard}. Your total is now {totalCardValue}");
-            Console.ResetColor();
+            ShowColoredText($"You drew a {firstCard}. Your total is now {totalCardValue}", ConsoleColor.Green, true);
 
             do
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write("Do you want to hit or stand? (H/S)");
-                Console.ResetColor();
+                ShowColoredText("Do you want to hit or stand? (H/S)", ConsoleColor.Magenta);
                 hitOrStand = char.ToUpper(Console.ReadKey(true).KeyChar);
                 Console.WriteLine();
 
@@ -112,9 +95,7 @@ namespace Week_5
                 {
                     nextCard = GetRandomCard();
                     totalCardValue += nextCard;
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You drew a {nextCard}. Your total is now {totalCardValue}");
-                    Console.ResetColor();
+                    ShowColoredText($"You drew a {nextCard}. Your total is now {totalCardValue}", ConsoleColor.Green, true);
 
                     if ( totalCardValue > 21)
                     {
@@ -123,14 +104,11 @@ namespace Week_5
                 }
                 else if (hitOrStand == 'S')
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine($"You chose to stand. Your total remains {totalCardValue}");
+                    ShowColoredText($"You chose to stand. Your total remains {totalCardValue}", ConsoleColor.DarkGreen, true);
                 }
                 else if (hitOrStand != 'H' && hitOrStand != 'S')
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid input, please enter H or S.");
-                    Console.ResetColor();
+                    ShowColoredText("Invalid input, please enter H or S.", ConsoleColor.Red, true);
                 }
             } while (hitOrStand != 'S' && totalCardValue < 21);
 
