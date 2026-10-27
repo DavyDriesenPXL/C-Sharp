@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            BlackJack.BlackJack_();
+            Slotmachine.Run();
         }
     }
 }

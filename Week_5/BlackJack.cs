@@ -9,8 +9,7 @@ namespace Week_5
 {
     internal class BlackJack
     {
-
-        public static void BlackJack_()
+        public static void Run()
         {
             ShowTitle();
             ShowMenu();

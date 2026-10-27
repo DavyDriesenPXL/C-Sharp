@@ -6,7 +6,7 @@ namespace Week_5
 {
     internal class Parkeermeter
     {
-        public static void Parkeermeter_()
+        public static void Run()
         {
             int menuChoice;
             DateTime sessionStart = DateTime.MinValue;

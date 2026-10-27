@@ -6,7 +6,7 @@ namespace Week_5
 {
     internal class DiceDuel
     {
-        public static void DiceDuel_()
+        public static void Run()
         {
             int round = 1;
             int playerWins = 0;
