@@ -119,11 +119,11 @@ namespace Week_5
                 return parameter;
             }
 
-            static double Calculate(double chosenNumber, double chosenNumber2, char parameter)
+            static double Calculate(double chosenNumber, double chosenNumber2, char operation)
             {
                 double result = 0;
 
-                switch (parameter)
+                switch (operation)
                 {
                     case '+':
                         result = chosenNumber + chosenNumber2;
