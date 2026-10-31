@@ -19,23 +19,26 @@ namespace Week_Herfstvakantie
 
             do
             {
-                Console.Clear();
-                Console.WriteLine("Welkom bij FunPark");
-                Console.WriteLine(DateTime.Now);
-                Console.WriteLine($"Totaal aantal tickets verkocht: {totalTicketsSold}");
-                Console.WriteLine("-------------------------------------");
-
-                Console.WriteLine(" 1) Nieuwe bestelling");
-                Console.WriteLine(" 0) Afsluiten");
-                Console.Write("Maak uw keuze: ");
-                isCorrect = int.TryParse(Console.ReadLine(), out menuChoice) && (menuChoice == 1 || menuChoice == 0);
-
-                if (!isCorrect)
+                do
                 {
-                    ShowText("Ongeldige keuze", ConsoleColor.Red);
-                    Console.WriteLine("Druk op enter om door te gaan ...");
-                    Console.ReadLine();
-                }
+                    Console.Clear();
+                    Console.WriteLine("Welkom bij FunPark");
+                    Console.WriteLine(DateTime.Now);
+                    Console.WriteLine($"Totaal aantal tickets verkocht: {totalTicketsSold}");
+                    Console.WriteLine("-------------------------------------");
+
+                    Console.WriteLine(" 1) Nieuwe bestelling");
+                    Console.WriteLine(" 0) Afsluiten");
+                    Console.Write("Maak uw keuze: ");
+                    isCorrect = int.TryParse(Console.ReadLine(), out menuChoice) && (menuChoice == 1 || menuChoice == 0);
+
+                    if (!isCorrect)
+                    {
+                        ShowText("Ongeldige keuze", ConsoleColor.Red);
+                        Console.WriteLine("Druk op enter om door te gaan ...");
+                        Console.ReadLine();
+                    }
+                } while (!isCorrect);
 
                 if (menuChoice == 1)
                 {
@@ -76,7 +79,7 @@ namespace Week_Herfstvakantie
                     Console.WriteLine("Tot ziens");
                 }
 
-            } while (!(isCorrect && menuChoice == 0));
+            } while (menuChoice != 0);
         }
 
         static void ShowText(string text, ConsoleColor color)
