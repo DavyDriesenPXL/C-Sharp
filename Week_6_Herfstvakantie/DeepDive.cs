@@ -17,8 +17,7 @@ namespace Week_Herfstvakantie
             int currentOxygen = 120;
             int completedDives = 0;
             int menuChoice;
-            bool isCorrect;
-
+          
             do
             {
                 Console.Clear();
