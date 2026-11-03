@@ -6,7 +6,7 @@ namespace Herfstvakantie
     {
         static void Main(string[] args)
         {
-            BlackJack.Run();
+            DeepDive.Run();
         }
     }
 }
