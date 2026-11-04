@@ -1,4 +1,5 @@
-﻿using Week_Herfstvakantie;
+﻿using Week_6_Herfstvakantie;
+using Week_Herfstvakantie;
 
 namespace Herfstvakantie
 {
@@ -6,7 +7,7 @@ namespace Herfstvakantie
     {
         static void Main(string[] args)
         {
-            DeepDive.Run();
+            SlotMachine.Run();
         }
     }
 }
