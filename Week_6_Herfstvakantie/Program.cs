@@ -7,7 +7,7 @@ namespace Herfstvakantie
     {
         static void Main(string[] args)
         {
-            Parkeermeter.Run();
+            FastParcel.Run();
         }
     }
 }
