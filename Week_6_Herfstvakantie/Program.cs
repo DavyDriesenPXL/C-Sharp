@@ -7,7 +7,7 @@ namespace Herfstvakantie
     {
         static void Main(string[] args)
         {
-            FastParcel.Run();
+            DeepDive2.Run();
         }
     }
 }
