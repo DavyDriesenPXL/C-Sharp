@@ -5,16 +5,15 @@
         static void Main(string[] args)
         {
             Athlete athlete = new();
-            string fullName;
+            string name;
             
-
             do
             {
                 Console.Write("Naam van atleet: ");
-                fullName = Console.ReadLine();
+                name = Console.ReadLine();
 
                 int time = int.MaxValue;
-                if (!fullName.Equals("STOP"))
+                if (!name.Equals("STOP"))
                 {
                     do
                     {
@@ -24,11 +23,11 @@
 
                 if (time < athlete.Time)
                 {
-                    athlete.Name = fullName;
+                    athlete.Name = name;
                     athlete.Time = time;
                 }
 
-            } while (!fullName.Equals("STOP"));
+            } while (!name.Equals("STOP"));
 
             if (!string.IsNullOrEmpty(athlete.Name))
             {
