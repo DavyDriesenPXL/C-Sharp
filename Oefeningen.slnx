@@ -9,4 +9,5 @@
   <Project Path="Week_7_Album/Week_7_Album.csproj" Id="1a9c2248-ca24-4878-8a6f-eeab2dc31d80" />
   <Project Path="Week_7_Athlete/Week_7_Athlete.csproj" Id="9bc8bcf5-9045-4b66-85a9-1266ad152f89" />
   <Project Path="Week_7_Labo/Week_7_Labo.csproj" Id="db3a14ba-5a05-4fa3-9169-dd3e1b8e6c79" />
+  <Project Path="Week_7_User/Week_7_User.csproj" Id="9ee29cd6-9b2d-414f-bc07-e95a10cfc6e6" />
 </Solution>
